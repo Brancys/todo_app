@@ -15,7 +15,51 @@ class TaskListScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Lista de Tareas'),
       ),
-      body: null,
+      body: tasks.isEmpty
+          ? const Center(child: Text('No hay tareas todavía.'))
+          : ListView.builder(
+              itemCount: tasks.length,
+              itemBuilder: (context, index) {
+                final task = tasks[index];
+                return ListTile(
+                  title: Text(
+                    task.title,
+                    style: TextStyle(
+                      decoration: task.isCompleted
+                          ? TextDecoration.lineThrough
+                          : null,
+                    ),
+                  ),
+                  leading: Checkbox(
+                    value: task.isCompleted,
+                    onChanged: (_) {
+                      ref.read(taskListProvider.notifier).toggleComplete(task);
+                    },
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.edit),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => TaskFormScreen(task: task),
+                          ));
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          ref
+                              .read(taskListProvider.notifier)
+                              .deleteTask(task.id!);
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
