@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/task.dart';
@@ -70,8 +71,8 @@ class _TaskFormScreenState extends ConsumerState<TaskFormScreen> {
               ),
               const SizedBox(height: 20),
               ElevatedButton.icon(
-                icon: const Icon(Icons.save),
-                label: Text(isEditing ? 'Actualizar' : 'Guardar'),
+                label: Text(isEditing ? 'Actualizar' : 'Agregar'),
+                icon:  Icon(isEditing ? CupertinoIcons.arrow_2_circlepath : CupertinoIcons.add),
                 onPressed: _save,
               ),
             ],

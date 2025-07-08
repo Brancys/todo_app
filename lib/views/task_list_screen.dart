@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/task.dart';
@@ -40,7 +41,7 @@ class TaskListScreen extends ConsumerWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.edit),
+                        icon: const Icon(CupertinoIcons.pencil),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (_) => TaskFormScreen(task: task),
@@ -48,7 +49,7 @@ class TaskListScreen extends ConsumerWidget {
                         },
                       ),
                       IconButton(
-                        icon: const Icon(Icons.delete),
+                        icon: const Icon(CupertinoIcons.trash),
                         onPressed: () {
                           ref
                               .read(taskListProvider.notifier)
@@ -66,7 +67,7 @@ class TaskListScreen extends ConsumerWidget {
             builder: (_) => const TaskFormScreen(),
           ));
         },
-        child: const Icon(Icons.add),
+        child: const Icon(CupertinoIcons.add),
       ),
     );
   }
