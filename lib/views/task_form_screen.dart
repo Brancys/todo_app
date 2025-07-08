@@ -26,7 +26,23 @@ class _TaskFormScreenState extends ConsumerState<TaskFormScreen> {
   void dispose() {
     _controller.dispose();
     super.dispose();
-  } 
+  }
+
+  void _save() async {
+    if (_formKey.currentState!.validate()) {
+      final title = _controller.text.trim();
+      final provider = ref.read(taskListProvider.notifier);
+
+      if (widget.task == null) {
+        await provider.addTask(title);
+      } else {
+        final updatedTask = widget.task!.copyWith(title: title);
+        await provider.updateTask(updatedTask);
+      }
+
+      Navigator.of(context).pop();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
