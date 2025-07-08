@@ -28,18 +28,18 @@ Una aplicación móvil desarrollada en Flutter para gestionar una lista de tarea
 ## 📁 Estructura del Proyecto
 
 lib/  
-├── main.dart
-├── models/
-│   └── task.dart
-├── data/
-│   └── task_database.dart
-├── providers/
-│   └── task_provider.dart
-├── views/
-│   ├── task_list_screen.dart
-│   └── task_form_screen.dart
-├── widgets/
-│   └── task_item.dart
+├── main.dart                    
+├── models/  
+│   └── task.dart               
+├── data/  
+│   └── task_database.dart      
+├── providers/  
+│   └── task_provider.dart      
+├── views/  
+│   ├── task_list_screen.dart   
+│   └── task_form_screen.dart   
+├── widgets/  
+│   └── task_item.dart          
 
 ---
 
