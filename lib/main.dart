@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'To-Do App',
       theme: ThemeData(primarySwatch: Colors.indigo),
       home: TaskListScreen(),
